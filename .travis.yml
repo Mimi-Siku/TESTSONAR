@@ -1,19 +1,10 @@
 language: java
 sudo: false
 install: true
-addons:
-  sonarcloud:
-    organization: "mimi-siku-github"
-    token:
-      secure: "$SONAR_TOKEN"
 jdk:
   - oraclejdk8
 script:
-  - mvn sonar:sonar \
-    -Dsonar.projectKey=Mimi-Siku_TESTSONAR \
-    -Dsonar.organization=mimi-siku-github \
-    -Dsonar.host.url=https://sonarcloud.io \
-    -Dsonar.login=3084049ee5548aad3cfcea9f2b8326155995ba32
+  - mvn sonar:sonar -Dsonar.projectKey=Mimi-Siku_TESTSONAR -Dsonar.organization=mimi-siku-github -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=3084049ee5548aad3cfcea9f2b8326155995ba32
 cache:
   directories:
     - '$HOME/.m2/repository'
