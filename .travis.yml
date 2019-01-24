@@ -1,11 +1,10 @@
 language: java
-sudo: false
-install: true
-jdk:
-  - oraclejdk8
+
+addons:
+  sonarcloud:
+    organization: "mimi-siku-github"
+    token:
+      secure: $SONAR_TOKEN
+
 script:
-  - mvn sonar:sonar -Dsonar.projectKey=Mimi-Siku_TESTSONAR -Dsonar.organization=mimi-siku-github -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=3084049ee5548aad3cfcea9f2b8326155995ba32
-cache:
-  directories:
-    - '$HOME/.m2/repository'
-    - '$HOME/.sonar/cache'
+  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
